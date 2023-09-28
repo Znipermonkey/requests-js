@@ -74,6 +74,13 @@ sayHelloButton.addEventListener('click', sayHello);
 
 const ohMy = () => {
     // YOUR CODE HERE
+     axios.get('http://localhost:3000/say-hello')
+     .then(res) => {
+        ((response) => { for(let i = 0; res.data.length; i++){
+            document.createElement("p", res.data[i])
+        }
+    })
+    }
 }
 
 document.getElementById('animals-button').addEventListener('click', ohMy)
@@ -94,6 +101,11 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 
 const repeatMyParam = () => {
     //YOUR CODE HERE
+    axios.get('http://localhost:3000/repeat/I-Love-Coding')
+        .then(res => res.data)
+            let repeatEl = document.getElementById('repeat-text');
+            repeatEl.textContent = res.data;
+            repeatEl.style.display = 'block';
 }
 
 // PROBLEM 7
@@ -119,7 +131,8 @@ const repeatMyParam = () => {
 */
 
 // CODE HERE
-
+axios.get('http://localhost:3000/repeat?myquery=a-really-awesome-query&anotherOne=DJ-Khalid')
+.then(( data ) => console.log(data))
 
 
 ////////////////
